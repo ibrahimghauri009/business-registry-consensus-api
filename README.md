@@ -1,5 +1,7 @@
 # Business Registry Consensus API
 
+[![tests](https://github.com/ibrahimghauri009/business-registry-consensus-api/actions/workflows/tests.yml/badge.svg)](https://github.com/ibrahimghauri009/business-registry-consensus-api/actions/workflows/tests.yml)
+
 `GET /v1/gov/business/registration`
 
 A multi-source, consensus-verified data service for agent runtimes. It ingests company registration facts live from three independent registers (UK Companies House, GLEIF, OpenCorporates), cross-verifies them, scores its own confidence, stores everything in PostgreSQL JSONB under a TTL, and serves one standardised envelope.
@@ -185,3 +187,7 @@ report/           two-page submission report and typeset PDF
 ## A note on the in-memory store
 
 `MemoryStore` mirrors the SQL semantics (including summarise-then-purge) so the suite runs without a database. It is **refused at startup outside `APP_ENV=test`** — `build_store()` raises rather than quietly demoting. A test double must never become a production fallback; that would be exactly the failure mode the brief prohibits.
+
+## Licence
+
+MIT; see `LICENSE`. Data returned by the registers is subject to each provider's terms.
