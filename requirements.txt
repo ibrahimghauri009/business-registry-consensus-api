@@ -1,0 +1,20 @@
+# Minimum versions rather than exact pins, so the project installs on any
+# Python from 3.10 through 3.14. Exact pins tie you to one interpreter: a
+# wheel built for 3.12 simply does not exist for 3.14, and pip then falls back
+# to compiling from source, which needs a C/Rust toolchain and usually fails.
+#
+# Verified green against fastapi 0.141, pydantic 2.13, pytest 9.1,
+# pytest-asyncio 1.4, psycopg 3.3 and reportlab 4.0 — i.e. the versions pip resolves today.
+fastapi>=0.115
+uvicorn>=0.34
+httpx>=0.28
+pydantic>=2.10
+psycopg[binary,pool]>=3.2.10
+pytest>=8.3
+pytest-asyncio>=0.25
+reportlab>=4.0
+
+# Plain `uvicorn` above, not `uvicorn[standard]`: the standard extra pulls in
+# httptools and uvloop, which are C extensions that need compiling on a very
+# new interpreter and which uvloop does not support on Windows at all. They are
+# a throughput optimisation only — nothing in this project imports them.
