@@ -218,7 +218,7 @@ def build():
 
     s.append(Paragraph("Model used", H2))
     s.append(Paragraph(
-        "<b>Claude 3.5 Sonnet / Antigravity Coding Agent</b>, accessed via pair-programming "
+        "<b>An AI coding assistant</b>, accessed via pair-programming "
         "sessions in September 2026. No external solutions or third-party code were copied.", BODY))
 
     s.append(Paragraph("What AI was used for", H2))
